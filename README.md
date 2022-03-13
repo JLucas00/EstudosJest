@@ -205,15 +205,15 @@ Testa links entre códigos apagando a implementação real. Captura chamadas par
 ### Módulos
 
 ```
-import axios from 'axios';
+import fetch from 'fetch';
 import Users from './users';
 
-jest.mock('axios');
+jest.mock('fetch');
 
 test('should fetch users', () => {
   const users = [{name: 'Bob'}];
   const resp = {data: users};
-  axios.get.mockResolvedValue(resp);
+  fetch.get.mockImplementation(() => Promise.resolve(resp))
 
   // or you could use the following depending on your use case:
   // axios.get.mockImplementation(() => Promise.resolve(resp))
